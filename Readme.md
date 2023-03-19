@@ -1,5 +1,7 @@
 # Jongyeol Web
-[접속](https://jongyeol.kro.kr)
+[Index 접속](https://jongyeol.kro.kr)
+[형석고 급식 알리미 접속](https://jongyeol.kro.kr/hshsmenu)
+[T21+C 접속](https://jongyeol.kro.kr/t21c)
 ---
 ### 소개 Information
 웹 사이트를 만드는 실행기입니다.
@@ -9,7 +11,7 @@
 ---
 ### 기능 Feature
 * [형석고등학교 급식 알리미](https://github.com/Jongye0l/hshsmenu-web)
-* T21C 레벨 표
+* T21+C 레벨 표
 * HCEC 위키(제작중)
 ---
 ### 개발 환경 Development environment
