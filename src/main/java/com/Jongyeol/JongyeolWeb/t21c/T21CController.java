@@ -51,71 +51,54 @@ public class T21CController {
                 }
                 .dif1 {
                     background-color: #0099ff;
-                    color: #ffffff;
                 }
                 .dif2 {
                     background-color: #00bbff;
-                    color: #ffffff;
                 }
                 .dif3 {
                     background-color: #00ddff;
-                    color: #ffffff;
                 }
                 .dif4 {
                     background-color: #00ffff;
-                    color: #ffffff;
                 }
                 .dif5 {
                     background-color: #00ffaa;
-                    color: #ffffff;
                 }
                 .dif6 {
                     background-color: #00ff00;
-                    color: #ffffff;
                 }
                 .dif7 {
                     background-color: #66ff00;
-                    color: #ffffff;
                 }
                 .dif8 {
                     background-color: #99ff00;
-                    color: #ffffff;
                 }
                 .dif9 {
                     background-color: #ccff00;
-                    color: #ffffff;
                 }
                 .dif10 {
                     background-color: #ffff00;
-                    color: #ffffff;
                 }
                 .dif11 {
                     background-color: #ffdd00;
-                    color: #ffffff;
                 }
                 .dif12 {
                     background-color: #ffcc00;
-                    color: #ffffff;
                 }
                 .dif13 {
                     background-color: #ffaa00;
-                    color: #ffffff;
                 }
                 .dif14 {
                     background-color: #ff8800;
-                    color: #ffffff;
                 }
                 .dif15 {
                     background-color: #ff6600;
-                    color: #ffffff;
                 }
                 .dif16 {
                     background-color: #ff4400;
-                    color: #ffffff;
                 }
                 .dif17 {
                     background-color: #ff0000;
-                    color: #ffffff;
                 }
                 .dif18 {
                     background-color: #cc0000;
@@ -290,8 +273,8 @@ public class T21CController {
             for(Level level : levels) {
                 data.append("<tr><td>").append(level.id).append("</td><td>").append(level.song).append("</td><td>")
                         .append(level.artist).append("</td><td>").append(level.creator).append("</td>")
-                        .append(getColored(level.diff)).append("<td>").append(level.diffstrength).append("</td>")
-                        .append(getColored(level.feeling)).append(getColored(level.forum)).append("</tr>");
+                        .append(getColored(level.diffString)).append("<td>").append(level.diffstrength).append("</td>")
+                        .append(getColored(level.feelingString)).append(getColored(level.forumString)).append("</tr>");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -305,7 +288,7 @@ public class T21CController {
                 """;
     }
     public String getColored(String difficulty) {
-        if(difficulty == null) difficulty = "";
+        //if(difficulty == null) difficulty = "";
         String fixedDifficulty = difficulty.replaceAll("\\.", "_").replaceAll("\\+", "_");
         return "<td class=\"dif" + fixedDifficulty + "\">" + difficulty + "</td>";
     }
