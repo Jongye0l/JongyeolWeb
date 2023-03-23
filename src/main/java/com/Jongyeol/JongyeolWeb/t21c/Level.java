@@ -36,15 +36,15 @@ public class Level {
         if(diff == 21) return "21";
         if(diff > 21.04 && diff < 21.06) return "21+"; // 2진수 이슈 tlqkf
         if(diff >= 20) {
-            if(diff * 10 % 1 == 0.5) return Math.floor(diff * 10) / 10 + "+";
+            if(diff * 10 % 1 <= 0.5) return Math.floor(diff * 10) / 10 + "+";
             return diff + "";
         }
-        else if(diff > 18 && diff % 1 == 0.5) return diff.intValue() + "+";
+        else if(diff > 18 && diff % 1 <= 0.5) return diff.intValue() + "+";
         return diff.intValue() + "";
     }
     public static List<Level> getLevels() throws IOException {
         RestTemplate restTemplate = new RestTemplate();
-        String json = restTemplate.getForObject("https://t21c-be.run-us-west2.goorm.site/levels/", String.class);
+        String json = restTemplate.getForObject("https://be.t21c-adofai.kro.kr/levels", String.class);
         JsonArray array = JsonParser.parseString(json).getAsJsonObject().get("results").getAsJsonArray();
         Gson gson = new Gson();
         ArrayList<Level> levels = new ArrayList<>();

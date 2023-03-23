@@ -17,6 +17,7 @@ public class T21CController {
                 <html>
                 <head>
                     <title>T21+C</title>
+                    <link rel="shortcut icon" href="/t21c/t21c.ico">
                     <style type="text/css">
                 table {
                     border-collapse: collapse;
@@ -280,16 +281,85 @@ public class T21CController {
             e.printStackTrace();
             return "error\n" + e.getMessage();
         }
-        return data + """
+        return data.append("""
                     </tbody>
                 </table>
                 </body>
                 </html>
-                """;
+                """).toString();
+    }
+    @GetMapping("/")
+    public String asdf() {
+        return allLevels();
     }
     public String getColored(String difficulty) {
         //if(difficulty == null) difficulty = "";
         String fixedDifficulty = difficulty.replaceAll("\\.", "_").replaceAll("\\+", "_");
         return "<td class=\"dif" + fixedDifficulty + "\">" + difficulty + "</td>";
+    }
+    @GetMapping("/new")
+    public String newDesign() {
+        StringBuilder data = new StringBuilder("""
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <title>T21+C</title>
+                        <link rel="shortcut icon" href="/t21c/t21c.ico">
+                        <style type="text/css">
+                            table {
+                                border-collapse: collapse;
+                                width: 100%;
+                                max-width: 900px;
+                                margin: 20px auto;
+                            }
+
+                            table td {
+                                padding: 8px;
+                                text-align: center;
+                                font-size: 20px;
+                                border-radius: 30px;
+                            }
+                            
+                            table td:hover {
+                            background-color: #eeeeee;
+                            cursor: pointer;
+                        }
+
+                            h1 {
+                                text-align: center;
+                            }
+
+                            p {
+                                text-align: center;
+                                font-size: 25px;
+                            }
+                        
+                        .dif {
+                            vertical-align: middle;
+                            padding-right: 10px;
+                            width: 40px;
+                            height: 40px;
+                        }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>The 21+ Collective</h1>
+                        <p>ALL Levels</p>
+                        <table>""");
+        try {
+            List<Level> levels = Level.getLevels();
+            for(Level level : levels) {
+                data.append("<tr><td><img src=\"https://github.com/T21C/T21C-assets/raw/main/difficons/").append(level.diffString)
+                        .append(".png\" class=\"dif\"> ").append(level.artist).append(" - ").append(level.song)
+                        .append(" | by ").append(level.creator).append("</td></tr>");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "error\n" + e.getMessage();
+        }
+        return data.append("""
+                    </table>
+                    </body>
+                </html>""").toString();
     }
 }
