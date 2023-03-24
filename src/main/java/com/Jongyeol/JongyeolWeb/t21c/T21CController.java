@@ -317,10 +317,9 @@ public class T21CController {
                                 padding: 8px;
                                 text-align: center;
                                 font-size: 20px;
-                                border-radius: 30px;
                             }
                             
-                            table td:hover {
+                            table tr:hover {
                             background-color: #eeeeee;
                             cursor: pointer;
                         }
@@ -350,7 +349,7 @@ public class T21CController {
             List<Level> levels = Level.getLevels();
             for(Level level : levels) {
                 data.append("<tr><td><img src=\"https://github.com/T21C/T21C-assets/raw/main/difficons/").append(level.diffString)
-                        .append(".png\" class=\"dif\"> ").append(level.artist).append(" - ").append(level.song)
+                        .append(".png\" class=\"dif\"></td> <td>").append(level.artist).append(" - ").append(level.song)
                         .append(" | by ").append(level.creator).append("</td></tr>");
             }
         } catch (IOException e) {

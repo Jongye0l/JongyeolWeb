@@ -27,6 +27,7 @@ public class Level {
     public String workshopLink;
     private void update() {
         if(feeling != null) feeling = (feeling * 100) / 100;
+        creator = creator.replaceAll("\\n", " ");
         diffString = levelString(diff);
         feelingString = levelString(feeling);
         forumString = levelString(forum);
@@ -36,7 +37,10 @@ public class Level {
         if(diff == 21) return "21";
         if(diff > 21.04 && diff < 21.06) return "21+"; // 2진수 이슈 tlqkf
         if(diff >= 20) {
-            if(diff * 10 % 1 <= 0.5) return Math.floor(diff * 10) / 10 + "+";
+            if(diff * 10 % 1 >= 0.5) {
+                System.out.println(diff);
+                return Math.floor(diff * 10) / 10 + "+";
+            }
             return diff + "";
         }
         else if(diff > 18 && diff % 1 <= 0.5) return diff.intValue() + "+";
