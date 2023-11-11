@@ -1,0 +1,214 @@
+body {
+	min-width: 1080px;
+	font-weight: 400;
+	color: #fff;
+	background-color: #999999;
+}
+.info {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1080px;
+	min-height: 270px;
+    border-radius: 20px;
+	background-color: #777777;
+    padding: 0px 20px;
+    text-shadow: black 0 0 8px;
+}
+.items {
+	min-height: 230px;
+    padding: 20px 10px;
+}
+.textitem {
+    width: 640px;
+    margin: -7px;
+    padding: 10px 7px;
+    font-weight: 700;
+    line-height: 1.05em;
+}
+.artist {
+    font-size:25px;
+}
+.name {
+    font-size:35px;
+}
+.creator {
+    font-size:20px;
+}
+.levels {
+	gap: 4px;
+	padding: 10px 0px;
+    width: 640px;
+	height: 70px;
+}
+.level {
+    margin-right: 25px;
+	float: left;
+}
+.label {
+    height:20px;
+    color:#b3b3b3;
+    font-weight:400;
+    font-size:18px;
+}
+.value {
+    padding-bottom:4px;
+}
+.levelImage {
+	margin-top: 5px;
+	width: 40px;
+	height: 40px;
+}
+.buttons {
+	padding: 10px 0px;
+}
+.buttons .button img {
+    width:50px;
+    height:50px;
+    margin-right:20px;
+    transition: transform .2s ease;
+}
+.buttons .button img:hover {
+    transform: scale(.9)
+}
+.video {
+	float: right;
+    border-radius:10px;
+}
+.video iframe {
+    width:400px;
+    height:225px;
+    border-radius:10px;
+}
+.items a {
+    color:#fff;
+}
+a {
+    text-decoration:none;
+}
+.items a:hover {
+    text-decoration:underline;
+}
+.leaderboard {
+    margin: 0 auto;
+    width: 1120px;
+    padding: 20px 10px;
+}
+.clears {
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 1120px;
+    border-radius: 20px;
+	background-color: #888888;
+    font-size: 28px;
+    text-align: center;
+}
+.titles {
+	height: 40px;
+    margin-top:10px;
+    justify-content: space-between;
+	float: behind;
+}
+.topclears {
+	height: 84px;
+    justify-content: space-between;
+	float: behind;
+}
+.title {
+	width: 373.3333333333333px;
+	float: left;
+}
+.topclear {
+	width: 373.3333333333333px;
+	float: left;
+	background-color: #777777;
+	transition: background-color .2s ease;
+    padding: 5px 0px;
+}
+.first {
+    border-radius: 0px 0px 0px 20px;
+}
+.last {
+    border-radius: 0px 0px 20px 0px;
+}
+.topclear:hover {
+	background-color: #666666;
+}
+.contents {
+    margin-top: 20px;
+}
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding: 12px 0;
+    border-radius: 6px;
+	color: white;
+    transition: background-color .2s ease;
+}
+.item:hover {
+    background-color: #aaaaaa;
+    text-decoration: none;
+}
+.rank {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: calc(100% + 6px);
+    margin-right: 20px;
+	padding: 17.5px;
+    font-weight: 700;
+    font-size: 1.75em;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 980px;
+}
+.player {
+    overflow: hidden;
+    width: 600px;
+    margin-right: 65px;
+    font-weight: 500;
+    font-size: 1.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail {
+    width: 1030px;
+    font-size: 1.1em;
+    opacity: .8;
+}
+.play {
+    position: absolute;
+    display: flex;
+}
+.score {
+    width: 180px;
+    font-weight: 600
+}
+.score:before {
+    content: "Score - ";
+    margin-left: 5px;
+    font-weight: 400
+}
+.playinfo,.playinfo div{
+    display:flex;
+    align-items:center
+}
+.playinfo img{
+    margin-right:4px
+}
+.time {
+    float: right;
+    font-weight: 600
+}
+.time:before{
+    content:"Cleared At - ";
+    font-weight:400
+}

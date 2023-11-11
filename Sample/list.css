@@ -1,0 +1,9 @@
+body {
+	min-width: 1080px;
+	font-weight: 400;
+	color: #fff;
+	background-color: #999999;
+}
+.title {
+    color: #000000;
+}

@@ -1,9 +1,6 @@
 package com.Jongyeol.JongyeolWeb.t21c;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
@@ -25,12 +22,20 @@ public class Level {
     public String vidLink;
     public String dlLink;
     public String workshopLink;
+    public String ytId;
     private void update() {
         if(feeling != null) feeling = (feeling * 100) / 100;
         creator = creator.replaceAll("\\n", " ");
         diffString = levelString(diff);
         feelingString = levelString(feeling);
         forumString = levelString(forum);
+        ytId = vidLink.replace("https://youtu.be/", "").replace("https://www.youtube.com/watch?", "")
+                .replace("https://www.youtube.com/shorts/", "").replace("-5", "")
+                .replace("https://www.youtube.com/playlist?list=", "");
+        if(!vidLink.contains("https://youtu.be/") && !vidLink.contains("https://www.youtube.com/watch?") && !vidLink.equals("-5")
+                && !vidLink.contains("https://www.youtube.com/shorts/") && !vidLink.contains("https://www.youtube.com/playlist?list=")) {
+            System.out.println("[Id #" + id + "] " + vidLink);
+        }
     }
     private String levelString(Float diff) {
         if(diff == null) return "";
@@ -55,5 +60,14 @@ public class Level {
             levels.add(level);
         }
         return levels;
+    }
+    public static Level getLevel(int id) {
+        RestTemplate restTemplate = new RestTemplate();
+        String json = restTemplate.getForObject("https://be.t21c.kro.kr/levels/" + id, String.class);
+        JsonElement element = JsonParser.parseString(json);
+        Gson gson = new Gson();
+        Level level = gson.fromJson(element, Level.class);
+        level.update();
+        return level;
     }
 }

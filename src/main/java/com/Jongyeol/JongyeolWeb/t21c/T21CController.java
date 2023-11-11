@@ -285,8 +285,7 @@ public class T21CController {
                     </tbody>
                 </table>
                 </body>
-                </html>
-                """).toString();
+                </html>""").toString();
     }
     @GetMapping("/")
     public String asdf() {
