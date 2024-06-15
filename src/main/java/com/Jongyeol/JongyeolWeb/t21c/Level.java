@@ -50,7 +50,7 @@ public class Level {
     }
     public static List<Level> getLevels() throws IOException {
         RestTemplate restTemplate = new RestTemplate();
-        String json = restTemplate.getForObject("https://be.t21c.kro.kr/levels", String.class);
+        String json = restTemplate.getForObject("https://be.tuforums.com/levels", String.class);
         JsonArray array = JsonParser.parseString(json).getAsJsonObject().get("results").getAsJsonArray();
         Gson gson = new Gson();
         ArrayList<Level> levels = new ArrayList<>();
@@ -63,7 +63,7 @@ public class Level {
     }
     public static Level getLevel(int id) {
         RestTemplate restTemplate = new RestTemplate();
-        String json = restTemplate.getForObject("https://be.t21c.kro.kr/levels/" + id, String.class);
+        String json = restTemplate.getForObject("https://be.tuforums.com/levels/" + id, String.class);
         JsonElement element = JsonParser.parseString(json);
         Gson gson = new Gson();
         Level level = gson.fromJson(element, Level.class);
