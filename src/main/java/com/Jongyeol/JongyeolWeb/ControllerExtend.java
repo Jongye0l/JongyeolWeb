@@ -26,7 +26,7 @@ public class ControllerExtend {
     }
 
     public static String getIp(HttpServletRequest request) {
-        String ipAddress = request.getHeader("Jongyeol-Nginx-IP");
+        String ipAddress = request.getHeader("X-Forwarded-For");
         if(ipAddress == null || ipAddress.isEmpty() || "unknown".equalsIgnoreCase(ipAddress))
             ipAddress = request.getRemoteAddr();
         else ipAddress = ipAddress.split(",")[0];
