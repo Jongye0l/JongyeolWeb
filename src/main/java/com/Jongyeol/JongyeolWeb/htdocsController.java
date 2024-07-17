@@ -1,5 +1,7 @@
 package com.Jongyeol.JongyeolWeb;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -16,19 +18,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-public class htdocsController {
+public class htdocsController extends ControllerExtend {
+
     @GetMapping("/{String}")
-    public ResponseEntity<Resource> string(@PathVariable("String") String string) throws IOException {
-        System.out.println("Trying to get Resource " + string);
-        File file = new File("htdocs/" + string);
-        boolean raw = new File("raw/" + string).exists();
+    public ResponseEntity<Resource> string(HttpServletRequest request, @PathVariable("String") String string) throws IOException {
+        info(request, string + " 파일을 불러오기 시도합니다");
+        File file = new File(JSetting.instance.htdocsPath + "/" + string);
+        boolean raw = new File(JSetting.instance.rawPath + "/" + string).exists();
         if(!file.exists()) {
-            System.out.println(string + " is not exist");
-            file = new File("FileNotFound");
-            raw = true;
+            error(request, string + " 파일을 찾을 수 없습니다");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else if (file.isDirectory()) {
-            file = new File("htdocs/" + string + "/index");
-            raw = new File("raw/" + string + "/index").exists();
+            file = new File(JSetting.instance.htdocsPath + "/" + string + "/index");
+            raw = new File(JSetting.instance.rawPath + "/" + string + "/index").exists();
         }
         Path path = Paths.get(file.getPath());
         String contentType = Files.probeContentType(path);
@@ -36,6 +38,7 @@ public class htdocsController {
         headers.add(HttpHeaders.CONTENT_TYPE, contentType);
         if(!raw) headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + path.getFileName().toString());
         Resource resource = new InputStreamResource(Files.newInputStream(path));
+        info(request, string + " 파일을 불러왔습니다.");
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 }
