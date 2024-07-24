@@ -19,7 +19,7 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation ("org.springframework.mobile:spring-mobile-starter:2.0.0.M3")
-	implementation 'commons-io:commons-io:2.11.0'
+	implementation 'commons-io:commons-io:2.16.1'
 	implementation 'com.google.code.gson:gson:2.8.9'
 	implementation files('lib/jsoup-1.14.3.jar')
 	implementation 'javax.servlet:javax.servlet-api:4.0.1'
